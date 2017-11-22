@@ -10,7 +10,7 @@
 
   <group if="$(arg doRosbag)">
     <node pkg = "rosbag" name= "rosbag_record" type= "record"
-  		args = "-a -x /camera/(.*) -O bagfile" output = "screen" 
+  		args = "-a -x /camera/(.*) -O turtleBotBagfile" output = "screen" 
     />
   </group>
 
