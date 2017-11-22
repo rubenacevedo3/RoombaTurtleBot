@@ -1,0 +1,8 @@
+(information) Couldn't find path given by -I 'include/'
+Checking roomba_turtle_bot/src/sensor.cpp...
+1/2 files checked 30% done
+Checking roomba_turtle_bot/src/walker.cpp...
+2/2 files checked 100% done
+(information) Cppcheck cannot find all the include files (use --check-config for details)
+
+
