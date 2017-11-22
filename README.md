@@ -106,6 +106,20 @@ $ cd ~/.ros
 $ rosbag play bagfile.bag
 ```
 
+## Note: bag file is too short
+the bagfile on this repository is very short because my Gazebo would shutdown after 2 seconds of working.
+
+I would get the following errros:
+
+```
+gzserver: /build/ogre-1.9-mqY1wq/ogre-1.9-1.9.0+dfsg1/OgreMain/src/OgreRenderSystem.cpp:546: virtual void Ogre::RenderSystem::setDepthBufferFor(Ogre::RenderTarget*): Assertion `bAttached && "A new DepthBuffer for a RenderTarget was created, but after creation" "it says it's incompatible with that RT"' failed.
+Aborted (core dumped)
+```
+```
+[gazebo-2] process has died [pid 16412, exit code 134, cmd /opt/ros/kinetic/lib/gazebo_ros/gzserver -e ode /opt/ros/kinetic/share/turtlebot_gazebo/worlds/playground.world __name:=gazebo __log:=/home/viki/.ros/log/6f71970e-cf2a-11e7-8602-000c2920a272/gazebo-2.log].
+log file: /home/viki/.ros/log/6f71970e-cf2a-11e7-8602-000c2920a272/gazebo-2*.log
+```
+
 ## Run cpplint 
 
 Use cpplint to identify potential source code issues that are in conflict with the Google C++ style guide. 
