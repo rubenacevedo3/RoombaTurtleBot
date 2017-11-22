@@ -2,7 +2,7 @@
 
 ## Overview
 
-This ROS package modifies the TurtleBot simulation and implements a simple walker algorithm much like a Roomba robot vacuum cleaner. The robot moves forward until it reaches an obstacle (but not colliding), then it rotates in place until the way ahead is clear, then it moves forward again and repeats. The node walker subscribes to the turtlebot's ~sensor_state topic and publishes to the turtlebot's cmd_vel topic to make this all happen. The whole package uses the Gazebo to visualize the code working. The launch file also alows you to enable/disable rosbag to record a bag file.  
+This ROS package modifies the TurtleBot simulation and implements a simple walker algorithm much like a Roomba robot vacuum cleaner. The robot moves forward until it reaches an obstacle (but not colliding), then it rotates in place until the way ahead is clear, then it moves forward again and repeats. The node walker subscribes to the turtlebot's ~sensor_state topic and publishes to the turtlebot's cmd_vel topic to make this all happen. The whole package uses the Gazebo to visualize the code working. The launch file also allows you to enable/disable rosbag to record a bag file.  
 
 ## License
 
@@ -19,14 +19,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## Dependencies
 
+* Ubuntu 
 * ROS Kinetic
 * Catkin
+* Gazebo
+* Turtlebot Simulation stack
 * roscpp package
 * std_msgs package
 * message_generation package
-* tf package
+* sensor_msgs package
 
-## Build/Run Steps
+## Steps to Build
 
 First, create and build a catkin workspace if you do not have one already
 
@@ -56,11 +59,12 @@ To build any catkin projects found in the src folder use:
 $ catkin_make
 ```
 
-To build any test found in the test folder use: 
+To install Turtlebot simulation stack type:
 ```
-# In a catkin workspace
-$ catkin_make test
+$ sudo apt-get install ros-kinetic-turtlebot-gazebo ros-kinetic-turtlebot-apps ros-kinetic-turtlebot-rviz-launchers
 ```
+
+## Steps to Run 
 
 To run the launch file:
 (note this is to run the launch file without enabling rosbag)
@@ -74,60 +78,33 @@ $ roscore
 ```
 $ cd ~/catkin_ws
 $ source ./devel/setup.bash
-$ roslaunch beginner_tutorials modifyPubFreq.launch
+$ roslaunch roomba_turtle_bot roombaTurtleBot.launch
+# press ctrl+C to stop
 ```
-## Steps for running rostest
-(In terminal 3)
-```
-$ cd ~/catkin_ws
-$ source ./devel/setup.bash
-$ rostest beginner_tutorials talkerTest.launch
-```
-## Steps for inspecting TF frames
-
-(In terminal 4)
-```
-$ cd ~/catkin_ws
-$ source ./devel/setup.bash
-$ rosrun tf tf_echo /world /talk
-# to create a pdf of the frames
-$ rosrun tf view_frames
-$ evince frames.pdf
-```
-To create a 
 
 ## Steps for recording bag files with the launch file
 
-(In terminal 5)
+(In terminal 2)
 ```
 $ cd ~/catkin_ws
 $ source ./devel/setup.bash
-$ roslaunch beginner_tutorials modifyPubFreq.launch doRosbag:=true
+$ roslaunch roslaunch roomba_turtle_bot roombaTurtleBot.launch doRosbag:=true
 # press ctrl+C to stop recording 
 ```
 ## Steps for inspecting the bag file
 
-(In terminal 5)
+(In terminal 2)
 ```
 $ cd ~/.ros
 $ rosbag info bagfile.bag
 ```
 
-## Steps for playing back the bag file with the Listener node demonstration
-
-(In terminal 6)
-```
-$ cd ~/catkin_ws
-$ source ./devel/setup.bash
-$ rosrun beginner_tutorials listener 
-```
-
-(In terminal 5)
+## Steps for playing back the bag file
+(In terminal 2)
 ```
 $ cd ~/.ros
 $ rosbag play bagfile.bag
 ```
-(you should be able to see the bagfile output in the listener terminal)
 
 ## Run cpplint 
 
@@ -138,7 +115,7 @@ To install and run from terminal:
 ```
 $ sudo apt-get install python-pip
 $ sudo pip install cpplint
-$ cd ~/catkin_ws/src/week11hw/beginner_tutorials
+$ cd ~/catkin_ws/src/RoombaTurtleBot/roomba_turtle_bot
 $ cpplint $( find . -name \*.hpp -or -name \*.cpp | grep -vE -e "^./build/" -e "^./vendor/" -e "^./docs/" -e "^./results" )
 ```
 
@@ -149,7 +126,7 @@ Use cppcheck for static code analysis.
 To run from terminal:
 
 ```
-$ cd ~/catkin_ws/src/week11hw/beginner_tutorials
+$ cd ~/catkin_ws/src/RoombaTurtleBot/roomba_turtle_bot
 $ cppcheck --enable=all --std=c++11 -I include/ --suppress=missingIncludeSystem $( find . -name *.cpp | grep -vE -e "^./build/" -e "^./vendor/" )
 ```
 
