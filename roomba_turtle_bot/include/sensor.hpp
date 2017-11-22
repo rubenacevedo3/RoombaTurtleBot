@@ -1,7 +1,7 @@
 /**
  *@author Ruben Acevedo
- *@file sensor.h
- *@brief This is the ".h" file for the sensor Class
+ *@file sensor.hpp
+ *@brief This is the ".hpp" file for the sensor Class
  *@copyright [2017] Ruben Acevedo
  *
  * This file will define the methods and attributes of the
@@ -30,8 +30,8 @@
  * DEALINGS IN THE SOFTWARE. © 2017 GitHub, Inc.
  */
 
-#ifndef include_sensor_h_
-#define include_sensor_h_
+#ifndef CATKIN_WS_SRC_ROOMBATURTLEBOT_ROOMBA_TURTLE_BOT_INCLUDE_SENSOR_HPP_
+#define CATKIN_WS_SRC_ROOMBATURTLEBOT_ROOMBA_TURTLE_BOT_INCLUDE_SENSOR_HPP_
 
 #include <sensor_msgs/LaserScan.h>
 #include "ros/ros.h"
@@ -78,4 +78,4 @@ class sensor {
   float minDist;
 };
 
-#endif  // include_sensor_h__
+#endif  // CATKIN_WS_SRC_ROOMBATURTLEBOT_ROOMBA_TURTLE_BOT_INCLUDE_SENSOR_HPP_

@@ -33,7 +33,7 @@
 #include <geometry_msgs/Twist.h>
 #include "std_msgs/String.h"
 #include "ros/ros.h"
-#include "sensor.h"
+#include "sensor.hpp"
 
 /**
 * This node makes the tutrlebot move forward until it reaches an obstacle 
@@ -58,11 +58,11 @@ int main(int argc, char **argv) {
     * NodeHandle destructed will close down the node.
     */
   ros::NodeHandle n;
-  
+
   /**
    * this creates a message type that the walker can publish
    */
-  geometry_msgs::Twist vel; 
+  geometry_msgs::Twist vel;
 
   /**
    * Delcare the sensor 
@@ -107,11 +107,11 @@ int main(int argc, char **argv) {
    * is the number of messages that will be buffered up before beginning to throw
    * away the oldest ones.
    */
-  ros::Subscriber sub = n.subscribe("/scan", 1000, &sensor::getMinDistanceCallBack, &s);
+  ros::Subscriber sub = n.subscribe("/scan", 1000,
+    &sensor::getMinDistanceCallBack, &s);
 
 
   while (ros::ok()) {
-
   /**
    * This checks to see if the robot is going to hit
    * anything. If it is then it stops and turns

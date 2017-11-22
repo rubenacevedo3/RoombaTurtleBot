@@ -29,7 +29,7 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE. © 2017 GitHub, Inc.
  */
-#include "sensor.h"
+#include "sensor.hpp"
 #include <sensor_msgs/LaserScan.h>
 #include "ros/ros.h"
 
@@ -51,7 +51,7 @@ sensor::sensor() {
  * @return a bool stating whether or not a command was matched
  */
 bool sensor::inCollision() {
-  if( minDist < 5 ) {
+  if (minDist < 5) {
     return true;
   } else {
       return false;
@@ -65,9 +65,10 @@ bool sensor::inCollision() {
  * @param a constant string reference representing a microphone signal
  * @return a bool stating whether or not a command was trained
  */
-void sensor::getMinDistanceCallBack(const sensor_msgs::LaserScan::ConstPtr& scan_msg) {
+void sensor::getMinDistanceCallBack
+  (const sensor_msgs::LaserScan::ConstPtr& scan_msg) {
   minDist = 1000;
-  for(auto l : scan_msg->ranges) {
+  for (auto l : scan_msg->ranges) {
     if (l < minDist) {
       minDist = l;
     }
